@@ -30,6 +30,7 @@ export default function page() {
     const [selectedIdGalery, setSelectedIdGalery] = useState<string | null>(null);
     const toast = useRef<Toast>(null);
     const message = useRef<Messages>(null);
+    const [currentTime, setCurrentTime] = useState('');
 
     type GalleryItem = {
         id: number;
@@ -58,7 +59,7 @@ export default function page() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/galery/all');
+                const response = await fetch('/api/galery');
                 const data = await response.json();
                 setGalleryData(data.data);
             } catch (error) {
@@ -67,6 +68,14 @@ export default function page() {
         };
 
         fetchData();
+        const interval = setInterval(() => {
+            const now = new Date();
+            setCurrentTime(now.toLocaleTimeString());
+          }, 1000);
+      
+          return () => {
+            clearInterval(interval);
+          };
     }, []);
 
     useEffect(() => {
@@ -227,16 +236,19 @@ export default function page() {
         setDisplayEditData(false);
     };
 
+    const sortedData = filteredData && filteredData.sort((a, b) => b.id - a.id);
+
     return (
         <div className="grid mt-2">
             <div className="card p-fluid w-full">
                 <h5>Galey</h5>
+                <p>Current Time: {currentTime}</p>
                 {!displayNewForm && displayListData && !displayEditData && (
                     <>
                         <Toolbar className="mb-4" left={leftToolbarTemplate} center={centerToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
-                        <div className="flex grid flex-column md:flex-row gap-2 md:gap-4 " >
-                            {filteredData &&
-                                filteredData.map((item, i) => (
+                        <div className="flex grid flex-column md:flex-row gap-2 md:gap-4 ">
+                            {sortedData &&
+                                sortedData.map((item, i) => (
                                     <div key={item.id} className="card p-fluid ">
                                         {/* <span>{item.id}</span> */}
                                         <div className="field-checkbox">
