@@ -1,0 +1,49 @@
+{
+  "name": "sakai-react",
+  "version": "10.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "format": "prettier --write \"{app,demo,layout,types}/**/*.{js,ts,tsx,d.ts}\"",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.11.0",
+    "@supabase/auth-helpers-nextjs": "^0.9.0",
+    "@supabase/ssr": "^0.1.0",
+    "@supabase/supabase-js": "^2.39.8",
+    "@types/react": "18.2.12",
+    "@types/react-dom": "18.2.5",
+    "axios": "^1.6.7",
+    "bufferutil": "^4.0.8",
+    "chart.js": "4.2.1",
+    "next": "13.4.8",
+    "primeflex": "^3.3.1",
+    "primeicons": "^6.0.1",
+    "primereact": "10.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.22.3",
+    "swr": "^2.2.5",
+    "utf-8-validate": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "@types/node": "^20.11.27",
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.6",
+    "prettier": "^2.8.8",
+    "prisma": "^5.11.0",
+    "sass": "^1.63.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
